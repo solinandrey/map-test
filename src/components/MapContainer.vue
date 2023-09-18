@@ -1,5 +1,5 @@
 <template>
-  <div style="height: 600px; width: 800px">
+  <div style="height: 100%; width: 100%">
     <l-map
       ref="map"
       v-model:zoom="zoom"
@@ -27,7 +27,7 @@ export default {
   },
   data() {
     return {
-      zoom: 2,
+      zoom: 10,
     };
   },
 };
