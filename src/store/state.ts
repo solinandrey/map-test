@@ -2,5 +2,5 @@ import { State } from "../types";
 
 export default {
   markers: [],
-  address: '',
+  activeMarker: null
 } as State;

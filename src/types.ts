@@ -1,9 +1,11 @@
 export interface Marker {
   lat: number;
   lng: number;
-  address: string
+  address: string;
+  id: number;
 }
 
 export interface State {
-  markers: Marker[];
+  markers: Marker[] | null;
+  activeMarker: number | null;
 }

@@ -6,17 +6,31 @@
       :key="point.lat + point.lng"
       :title="point.address"
       :subtitle="`${point.lat}, ${point.lng}`"
+      class="markers__item"
+      :class="{active : point.id === activeMarker}"
+      @click="recenterMap(point)"
     ></v-list-item>
   </v-list>
 </template>
 
 <script lang="ts">
-import {Marker} from '../types'
+import {Marker} from '../types';
+import {mapState, mapMutations} from 'vuex';
 export default {
   data: () => ({
   }),
   props: {
-    markers: Array<Marker>
+    markers: Array<Marker>,
+  },
+  computed: {
+    ...mapState(['activeMarker'])
+  },
+  methods: {
+    ...mapMutations(['setActiveMarker']),
+    recenterMap(marker: Marker) {
+      this.$emit('recenterMap', marker);
+      this.setActiveMarker(marker.id);
+    }
   }
 };
 </script>
@@ -26,6 +40,15 @@ export default {
 .markers {
   &__subheader {
     font-size: 20px;
+  }
+
+  &__item {
+    background: transparent;
+    transition: background-color .2s ease-in-out;
+    &.active {
+      background: #aaaaaa;
+      color: #fff;
+    }
   }
 }
 

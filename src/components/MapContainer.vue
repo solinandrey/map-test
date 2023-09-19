@@ -7,8 +7,8 @@
   >
     <l-map
       ref="map"
-      v-model:zoom="zoom"
-      :center="[47.41322, -1.219482]"
+      :zoom="zoom"
+      :center="center"
       :use-global-leaflet="false"
       @click="newMarker"
     >
@@ -21,6 +21,7 @@
         v-for="(marker, index) in markers"
         :key="'marker' + index"
         :lat-lng="marker"
+        @click="setActiveMarker(marker.id)"
       ></l-marker>
     </l-map>
     <v-btn
@@ -40,7 +41,6 @@ import "leaflet/dist/leaflet.css";
 import "leaflet/dist/images/marker-shadow.png";
 import { LMap, LTileLayer, LMarker } from "@vue-leaflet/vue-leaflet";
 import { mapMutations, mapActions } from "vuex";
-// import { Marker } from '../types';
 
 export default {
   data: () => ({
@@ -54,14 +54,14 @@ export default {
   },
   props: {
     markers: Array,
+    center: Array
   },
   methods: {
-    ...mapMutations(["addMarker"]),
+    ...mapMutations(["addMarker", "setActiveMarker"]),
     ...mapActions(["getAddress"]),
     newMarker(event) {
       if (!this.addingMode) return
       this.getAddress(event.latlng);
-      // this.addMarker(event.latlng);
     },
     toggleMode() {
       this.addingMode = !this.addingMode;
