@@ -1,36 +1,93 @@
 <template>
-  <div style="height: 100%; width: 100%">
+  <v-container
+    style="height: 100%; width: 100%"
+    class="map-container pa-0"
+    :class="{ 'adding-mode': addingMode }"
+    ref="mapContainer"
+  >
     <l-map
       ref="map"
       v-model:zoom="zoom"
       :center="[47.41322, -1.219482]"
       :use-global-leaflet="false"
+      @click="newMarker"
     >
       <l-tile-layer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         layer-type="base"
         name="OpenStreetMap"
       ></l-tile-layer>
+      <l-marker
+        v-for="(marker, index) in markers"
+        :key="'marker' + index"
+        :lat-lng="marker"
+      ></l-marker>
     </l-map>
-  </div>
+    <v-btn
+      :icon="addingMode ? 'mdi-close' : 'mdi-plus'"
+      size="large"
+      class="add-button"
+      @click="toggleMode"
+    ></v-btn>
+    <v-tooltip v-model="addingMode" class="tooltip" :offset="100" contained max-width="max-content">
+      <span>Добавьте маркер</span>
+    </v-tooltip>
+  </v-container>
 </template>
 
 <script>
 import "leaflet/dist/leaflet.css";
 import "leaflet/dist/images/marker-shadow.png";
-import { LMap, LTileLayer } from "@vue-leaflet/vue-leaflet";
+import { LMap, LTileLayer, LMarker } from "@vue-leaflet/vue-leaflet";
+import { mapMutations, mapActions } from "vuex";
+// import { Marker } from '../types';
 
 export default {
+  data: () => ({
+    zoom: 10,
+    addingMode: false,
+  }),
   components: {
     LMap,
     LTileLayer,
+    LMarker,
   },
-  data() {
-    return {
-      zoom: 10,
-    };
+  props: {
+    markers: Array,
   },
+  methods: {
+    ...mapMutations(["addMarker"]),
+    ...mapActions(["getAddress"]),
+    newMarker(event) {
+      if (!this.addingMode) return
+      this.getAddress(event.latlng);
+      // this.addMarker(event.latlng);
+    },
+    toggleMode() {
+      this.addingMode = !this.addingMode;
+    },
+  },
+  computed: {
+  }
 };
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+.map-container {
+  position: relative;
+  box-sizing: border-box;
+}
+
+.tooltip {
+  display: flex;
+  justify-content: center;
+  padding-top: 50px;
+}
+
+.add-button {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+</style>
