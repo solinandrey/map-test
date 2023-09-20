@@ -1,7 +1,7 @@
 <template>
-  <v-app>
-    <Navigation />
-    <v-main>
+  <v-app class="h-screen">
+    <Navigation style="height: 15%" />
+    <v-main style="height: 85%">
       <router-view />
     </v-main>
   </v-app>

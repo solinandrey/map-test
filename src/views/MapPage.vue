@@ -1,7 +1,7 @@
 <template>
   <v-container fluid class="pa-0 fill-height" fill-height>
     <v-row justify="stretch" no-gutters class="fill-height">
-      <v-col cols="4">
+      <v-col cols="4" style="height:100%;overflow:scroll;">
         <MarkersList :markers="markers" @onAddressClick="onAddressClick" />
       </v-col>
       <v-col cols="8">

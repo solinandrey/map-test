@@ -1,5 +1,5 @@
 <template>
-  <v-list lines="one">
+  <v-list lines="one" class="fill-height overflow-scroll">
     <v-list-subheader title="Маркеры:" class="markers__subheader"/>
     <v-list-item
       v-for="point in markers"

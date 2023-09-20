@@ -1,9 +1,9 @@
 <template>
-  <v-card color="basil">
-    <v-card-title class="text-center justify-center py-6">
-      <h1 class="font-weight-bold text-h2 text-basil">
-        Тестовое задание SquareGPS
-      </h1>
+  <v-card color="basil" class="justify-space-between d-flex flex-column" style="">
+    <v-card-title
+      class="text-center font-weight-bold text-white justify-center py-6 text-h6 text-sm-h4 text-md-h3"
+    >
+      Тестовое задание SquareGPS
     </v-card-title>
 
     <v-tabs v-model="tab" class="tabs">
@@ -23,25 +23,25 @@
 export default {
   data() {
     return {
-      tab: '',
+      tab: "",
       items: [
-        { label: "О задании", link: "/", name: 'About' },
-        { label: "Карта", link: "/map", name: 'Map' },
+        { label: "О задании", link: "/", name: "About" },
+        { label: "Карта", link: "/map", name: "Map" },
       ],
     };
   },
   computed: {
     activeTab() {
-      return this.$route.name
-    }
-  }
+      return this.$route.name;
+    },
+  },
 };
 </script>
 <style lang="scss">
 /* Helper classes */
 
 .tabs {
-  .tabs__item{
+  .tabs__item {
     color: #ffffff;
   }
 }
