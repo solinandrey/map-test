@@ -12,6 +12,7 @@
         :key="item.label"
         :text="item.label"
         :to="item.link"
+        :value="item.name"
         class="tabs__item"
       >
       </v-tab>
@@ -22,14 +23,18 @@
 export default {
   data() {
     return {
-      tab: "Appetizers",
+      tab: '',
       items: [
-        { label: "О задании", link: "/" },
-        { label: "Карта", link: "/map" },
+        { label: "О задании", link: "/", name: 'About' },
+        { label: "Карта", link: "/map", name: 'Map' },
       ],
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     };
   },
+  computed: {
+    activeTab() {
+      return this.$route.name
+    }
+  }
 };
 </script>
 <style lang="scss">

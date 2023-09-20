@@ -21,7 +21,7 @@
         v-for="(marker, index) in markers"
         :key="'marker' + index"
         :lat-lng="marker"
-        @click="setActiveMarker(marker.id)"
+        @click="onMarkerClick(marker.id)"
       ></l-marker>
     </l-map>
     <v-btn
@@ -62,6 +62,9 @@ export default {
     newMarker(event) {
       if (!this.addingMode) return
       this.getAddress(event.latlng);
+    },
+    onMarkerClick(id) {
+      this.$emit('onMarkerClick', id);
     },
     toggleMode() {
       this.addingMode = !this.addingMode;

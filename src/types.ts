@@ -6,6 +6,7 @@ export interface Marker {
 }
 
 export interface State {
+  mapCenter: number[];
   markers: Marker[] | null;
   activeMarker: number | null;
 }

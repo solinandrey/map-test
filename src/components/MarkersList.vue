@@ -8,7 +8,7 @@
       :subtitle="`${point.lat}, ${point.lng}`"
       class="markers__item"
       :class="{active : point.id === activeMarker}"
-      @click="recenterMap(point)"
+      @click="onAddressClick(point)"
     ></v-list-item>
   </v-list>
 </template>
@@ -27,9 +27,8 @@ export default {
   },
   methods: {
     ...mapMutations(['setActiveMarker']),
-    recenterMap(marker: Marker) {
-      this.$emit('recenterMap', marker);
-      this.setActiveMarker(marker.id);
+    onAddressClick(marker: Marker) {
+      this.$emit('onAddressClick', marker);
     }
   }
 };
