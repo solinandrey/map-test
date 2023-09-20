@@ -1,4 +1,5 @@
 import { Marker } from "@/types";
+import Backend from '../plugins/backend'
 
 export const getAddress = ({commit}: any, {lat, lng}: Marker) => {
   fetch(`https://geocode.maps.co/reverse?lat=${lat}&lon=${lng}`)

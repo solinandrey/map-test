@@ -1,8 +1,9 @@
+import Backend from "@/plugins/backend";
 import { State, Marker } from "@/types";
 
 export function addMarker(state: State, marker: Marker) {
-  state?.markers?.push(marker);
-  localStorage.markers = JSON.stringify(state.markers);
+  state.markers?.push(marker);
+  if (state.markers) Backend.updateMarkersInStorage(state.markers);
 }
 
 export function setActiveMarker(state: State, markerId: number) {

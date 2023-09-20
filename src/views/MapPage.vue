@@ -20,6 +20,7 @@ import MarkersList from "../components/MarkersList.vue";
 import MapContainer from "../components/MapContainer.vue";
 import { mapState, mapMutations, mapActions } from "vuex";
 import { Marker } from "@/types";
+import Backend from '../plugins/backend';
 export default {
   data: () => ({}),
   components: {
@@ -44,14 +45,14 @@ export default {
       this.setActiveMarker(id);
     },
   },
-  beforeMount() {
-    if (localStorage.markers) {
-      const markers = JSON.parse(localStorage.markers);
-      markers.forEach((el: Marker) => this.getAddress(el));
+  async beforeMount() {
+    const storageMarkers = await Backend.getMarkersFromStorage();
+    if (storageMarkers && !this.markers.length) {
+      storageMarkers.forEach((el: Marker) => this.getAddress(el));
     
       const id = Number(this.$route.query.id);
       if (id) {
-        this.setMapCenter(markers.find((el: Marker) => el.id === id))
+        this.setMapCenter(storageMarkers.find((el: Marker) => el.id === id))
         this.setActiveMarker(id);
       }
     }
