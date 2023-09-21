@@ -45,6 +45,12 @@ export default {
     color: #ffffff;
   }
 }
+
+@media only screen and (max-width: 600px) {
+  .tabs__item {
+    width: 50%;
+  }
+}
 .bg-basil {
   background-color: #101010 !important;
 }

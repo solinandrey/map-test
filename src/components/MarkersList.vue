@@ -1,41 +1,42 @@
 <template>
-  <v-list lines="one" class="fill-height overflow-scroll">
-    <v-list-subheader title="Маркеры:" class="markers__subheader"/>
-    <v-list-item
-      v-for="point in markers"
-      :key="point.lat + point.lng"
-      :title="point.address"
-      :subtitle="`${point.lat}, ${point.lng}`"
-      class="markers__item"
-      :class="{active : point.id === activeMarker}"
-      @click="onAddressClick(point)"
-    ></v-list-item>
+  <v-list lines="one" class="fill-height d-flex flex-column justify-space-between">
+    <v-list-subheader title="Маркеры:" class="markers__subheader" />
+    <v-container class="pa-0 overflow-auto" style="height: 95%">
+      <v-list-item
+        v-for="point in markers"
+        :key="point.lat + point.lng"
+        :title="point.address"
+        :subtitle="`${point.lat}, ${point.lng}`"
+        class="markers__item"
+        :class="{ active: point.id === activeMarker }"
+        @click="onAddressClick(point)"
+      ></v-list-item>
+    </v-container>
   </v-list>
 </template>
 
 <script lang="ts">
-import {Marker} from '../types';
-import {mapState, mapMutations} from 'vuex';
+import { Marker } from "../types";
+import { mapState, mapMutations } from "vuex";
 export default {
-  data: () => ({
-  }),
+  data: () => ({}),
   props: {
     markers: Array<Marker>,
   },
   computed: {
-    ...mapState(['activeMarker'])
+    ...mapState(["activeMarker"]),
   },
   methods: {
-    ...mapMutations(['setActiveMarker']),
+    ...mapMutations(["setActiveMarker"]),
     onAddressClick(marker: Marker) {
-      this.$emit('onAddressClick', marker);
-    }
-  }
+      this.$emit("onAddressClick", marker);
+    },
+  },
+  watch: {},
 };
 </script>
 
 <style lang="scss" scoped>
-
 .markers {
   &__subheader {
     font-size: 20px;
@@ -43,12 +44,11 @@ export default {
 
   &__item {
     background: transparent;
-    transition: background-color .2s ease-in-out;
+    transition: background-color 0.2s ease-in-out;
     &.active {
       background: #aaaaaa;
       color: #fff;
     }
   }
 }
-
 </style>
