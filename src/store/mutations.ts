@@ -16,3 +16,7 @@ export function setMapCenter(
 ) {
   state.mapCenter = [lat, lng];
 }
+
+export function setErrorStatus(state: State, errorStatus: boolean) {
+  state.error = errorStatus;
+}

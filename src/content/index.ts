@@ -7,7 +7,8 @@ export default {
     language: {
       ru: "Русский",
       en: "English"
-    }
+    },
+    error: "Error occured while searching address"
   },
   ru: {
     title: "Тестовое задание для SquareGPS",
@@ -17,6 +18,7 @@ export default {
     language: {
       ru: "Русский",
       en: "English"
-    }
+    },
+    error: "Во время поиска адреса возникла ошибка"
   },
 };
