@@ -8,7 +8,8 @@ export default {
       ru: "Русский",
       en: "English"
     },
-    error: "Error occured while searching address"
+    error: "Error occured while searching address",
+    noMarkers: "No markers added"
   },
   ru: {
     title: "Тестовое задание для SquareGPS",
@@ -19,6 +20,7 @@ export default {
       ru: "Русский",
       en: "English"
     },
-    error: "Во время поиска адреса возникла ошибка"
+    error: "Во время поиска адреса возникла ошибка",
+    noMarkers: "Маркеры не добавлены"
   },
 };

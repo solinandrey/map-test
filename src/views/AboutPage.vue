@@ -4,15 +4,15 @@
 
 <script>
 import html from "../assets/task.html?raw";
+import htmlEng from "../assets/taskEng.html?raw"
 import image from '../assets/image1.png';
 export default {
   computed: {
     taskBody() {
-      console.log(new DOMParser().parseFromString(html, "text/html"))
       return html;
     },
     processedHtml() {
-      let el = new DOMParser().parseFromString(html, "text/html");
+      let el = new DOMParser().parseFromString(this.$i18n.locale === 'ru' ? html : htmlEng, "text/html");
       let img = el.querySelector("#image");
       img.src = image
       return el.documentElement.innerHTML;

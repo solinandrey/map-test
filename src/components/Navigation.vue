@@ -13,7 +13,7 @@
       <v-tab
         v-for="item in items"
         :key="item.label"
-        :text="item.label"
+        :text="$t(item.label)"
         :to="item.link"
         :value="item.name"
         class="tabs__item"
@@ -32,8 +32,8 @@ export default {
     return {
       tab: "",
       items: [
-        { label: this.$t("about"), link: "/", name: "About" },
-        { label: this.$t("map"), link: "/map", name: "Map" },
+        { label: "about", link: "/", name: "About" },
+        { label: "map", link: "/map", name: "Map" },
       ],
     };
   },
@@ -48,7 +48,6 @@ export default {
 };
 </script>
 <style lang="scss">
-/* Helper classes */
 
 .tabs {
   .tabs__item {

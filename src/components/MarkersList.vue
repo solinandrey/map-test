@@ -11,6 +11,7 @@
         :class="{ active: point.id === activeMarker }"
         @click="onAddressClick(point)"
       ></v-list-item>
+      <div class="no-markers" v-if="!markers?.length">{{ $t('noMarkers') }}</div>
     </v-container>
   </v-list>
 </template>
@@ -50,5 +51,12 @@ export default {
       color: #fff;
     }
   }
+}
+
+.no-markers {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%,-50%,0);
 }
 </style>
