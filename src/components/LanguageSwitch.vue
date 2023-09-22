@@ -1,8 +1,8 @@
 <template>
   <div class="text-center">
-    <v-menu open-on-hover>
+    <v-menu>
       <template v-slot:activator="{props}">
-        <v-btn icon="mdi-translate-variant" color="white" v-bind="props"></v-btn>
+        <v-btn icon="mdi-translate-variant" color="white" v-bind="props" size="small"></v-btn>
       </template>
 
       <v-list>

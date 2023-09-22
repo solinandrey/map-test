@@ -5,7 +5,7 @@
     style=""
   >
     <v-card-title
-      class="text-center font-weight-bold text-white justify-center py-6 text-h6 text-sm-h4 text-md-h3"
+      class="text-center font-weight-bold text-white justify-center pt-10 text-h6 text-sm-h4 text-md-h3"
     >
       {{ $t("title") }}
     </v-card-title>
@@ -67,6 +67,12 @@ export default {
   .tabs__item {
     width: 50%;
   }
+
+  .language-selector {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
 }
 .bg-basil {
   background-color: #101010 !important;

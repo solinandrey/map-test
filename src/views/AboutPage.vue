@@ -1,20 +1,25 @@
 <template>
-  <div class="about" v-html="taskBody"></div>
+  <div class="about pa-4" v-html="processedHtml"></div>
 </template>
 
-<script lang="ts">
-import html from '../assets/task.html?raw'
+<script>
+import html from "../assets/task.html?raw";
+import image from '../assets/image1.png';
 export default {
-  data: () => ({
-    task: ''
-  }),
   computed: {
     taskBody() {
-      return html
-    }
+      console.log(new DOMParser().parseFromString(html, "text/html"))
+      return html;
+    },
+    processedHtml() {
+      let el = new DOMParser().parseFromString(html, "text/html");
+      let img = el.querySelector("#image");
+      img.src = image
+      return el.documentElement.innerHTML;
+    },
   },
-  mounted() {
-    this.task = fetch('../assets/task.html').then(res => res.json()).then(data => console.log(data))
-  }
-}
+};
 </script>
+
+<style lang="scss" scoped>
+</style>
