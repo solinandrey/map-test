@@ -2,6 +2,8 @@
 import vue from '@vitejs/plugin-vue'
 import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 import ViteFonts from 'unplugin-fonts/vite'
+import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite'
+import { resolve, dirname } from 'node:path'
 
 // Utilities
 import { defineConfig } from 'vite'
@@ -25,6 +27,10 @@ export default defineConfig({
         }],
       },
     }),
+    VueI18nPlugin({
+      runtimeOnly: false,
+      include: resolve(dirname(fileURLToPath(import.meta.url)), './src/content/**'), // provide a path to the folder where you'll store translation data (see below)
+    })
   ],
   define: { 'process.env': {} },
   resolve: {

@@ -1,9 +1,13 @@
 <template>
-  <v-card color="basil" class="justify-space-between d-flex flex-column" style="">
+  <v-card
+    color="basil"
+    class="justify-space-between d-flex flex-column"
+    style=""
+  >
     <v-card-title
       class="text-center font-weight-bold text-white justify-center py-6 text-h6 text-sm-h4 text-md-h3"
     >
-      Тестовое задание SquareGPS
+      {{ $t("title") }}
     </v-card-title>
 
     <v-tabs v-model="tab" class="tabs">
@@ -17,18 +21,25 @@
       >
       </v-tab>
     </v-tabs>
+    <div class="language-selector">
+      <LanguageSwitch />
+    </div>
   </v-card>
 </template>
-<script>
+<script lang="ts">
+import LanguageSwitch from "../components/LanguageSwitch.vue";
 export default {
   data() {
     return {
       tab: "",
       items: [
-        { label: "О задании", link: "/", name: "About" },
-        { label: "Карта", link: "/map", name: "Map" },
+        { label: this.$t("about"), link: "/", name: "About" },
+        { label: this.$t("map"), link: "/map", name: "Map" },
       ],
     };
+  },
+  components: {
+    LanguageSwitch,
   },
   computed: {
     activeTab() {
@@ -44,6 +55,12 @@ export default {
   .tabs__item {
     color: #ffffff;
   }
+}
+
+.language-selector {
+  position: absolute;
+  top: 20px;
+  right: 20px;
 }
 
 @media only screen and (max-width: 600px) {
