@@ -31,7 +31,7 @@
       @click="toggleMode"
     ></v-btn>
     <v-tooltip v-model="addingMode" class="tooltip" :offset="100" contained max-width="max-content">
-      <span>Добавьте маркер</span>
+      <span>{{$t('addMarker')}}</span>
     </v-tooltip>
   </v-container>
 </template>
