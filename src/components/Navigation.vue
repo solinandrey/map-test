@@ -1,8 +1,7 @@
 <template>
   <v-card
     color="basil"
-    class="justify-space-between d-flex flex-column"
-    style=""
+    class="justify-space-between d-flex flex-column rounded-0"
   >
     <v-card-title
       class="text-center font-weight-bold text-white justify-center pt-10 text-h6 text-sm-h4 text-md-h3"

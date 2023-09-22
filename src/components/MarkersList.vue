@@ -1,6 +1,6 @@
 <template>
   <v-list lines="one" class="fill-height d-flex flex-column justify-space-between">
-    <v-list-subheader title="Маркеры:" class="markers__subheader" />
+    <v-list-subheader :title="$t('markers')" class="markers__subheader" />
     <v-container class="pa-0 overflow-auto" style="height: 95%">
       <v-list-item
         v-for="point in markers"
